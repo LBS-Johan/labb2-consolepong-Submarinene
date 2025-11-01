@@ -12,28 +12,40 @@ namespace Labb2_ConsolePong
        public int y = 5;
        public int size = 5;
 
+        public Paddle(int x, int y, int size)
+        {
+            this.x = x;
+            this.y = y;
+            this.size = size;
+        }
+
         public void Move(int yAmount)
         {
+            //prevent paddle from moving outside screen
+            var tempY = y + yAmount;
+            if (tempY >= 25 || tempY <= -1) //kom ihåg att räkna in storleken nedåt här!!
+                return;
+
             y += yAmount;
         }
 
-        public void Draw(int x, int y)
+        public void Draw()
         {
-                 int i = 1;
-                Console.SetCursorPosition(x, this.y + i );
+            //int i = 1;
+            for(int i= 0; i < size; i++)
+            {
+                Console.SetCursorPosition(this.x, this.y +i);// + i );
                 Console.Write("|");
+            }
+
+
            
         }
 
 
-        /*  public Paddle(int x, int y, int size)
-          {
-              this.x = x;
-              this.y = y;
-              this.size = size;
-          }
+          
 
-          */
+          
 
 
 
